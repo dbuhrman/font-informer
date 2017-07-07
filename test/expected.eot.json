@@ -1,4 +1,5 @@
 { 
+	"format": "embedded-opentype",
 	"type": "eot",
 	"name": "SourceSansPro-Regular",
 	"weight": 400,
