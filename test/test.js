@@ -34,28 +34,28 @@ describe('font-informer', function () {
 	describe('parsing buffers', function() {
 		it('can parse .ttf buffers', function(done) {
 			var file = path.join(__dirname, 'fonts', 'pathFont.ttf');
-			informer(fs.readFileSync(file)).then(function(result) {
+			informer(fs.readFileSync(file), 'pathFont.ttf').then(function(result) {
 				assert.deepEqual(result, require('./expected.ttf.json'));
 				done();
 			});
 		});
 		it('can parse .woff buffers', function(done) {
 			var file = path.join(__dirname, 'fonts', 'pathFont.woff');
-			informer(fs.readFileSync(file)).then(function(result) {
+			informer(fs.readFileSync(file), 'pathFont.woff').then(function(result) {
 				assert.deepEqual(result, require('./expected.woff.json'));
 				done();
 			});
 		});
 		it('can parse .eot buffers', function(done) {
 			var file = path.join(__dirname, 'fonts', 'pathFont.eot');
-			informer(fs.readFileSync(file)).then(function(result) {
+			informer(fs.readFileSync(file), 'pathFont.eot').then(function(result) {
 				assert.deepEqual(result, require('./expected.eot.json'));
 				done();
 			});
 		});
 		it('can parse .svg buffers', function(done) {
 			var file = path.join(__dirname, 'fonts', 'pathFont.svg');
-			informer(fs.readFileSync(file)).then(function(result) {
+			informer(fs.readFileSync(file), 'pathFont.svg').then(function(result) {
 				assert.deepEqual(result, require('./expected.svg.json'));
 				done();
 			});
@@ -64,11 +64,11 @@ describe('font-informer', function () {
 
 	describe('parsing filenames', function() {
 		it('can parse common filenames', function(done) {
-			Promise.all(fileNameExamples.map(function(example) {
-				return fileNameParser(example.input).then(function(result) {
-					assert.deepEqual(result, example.expected);
-				});
-			})).then(function() { done(); });
+			fileNameExamples.forEach(function(example) {
+				const result = fileNameParser(example.input);
+				assert.deepEqual(result, example.expected);
+			});
+			done();
 		})
 	})
 });
