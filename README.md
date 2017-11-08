@@ -25,6 +25,7 @@ informer('font.ttf').then(function (result) {
 { 
 	"type": "ttf",
 	"name": "SourceSansPro-Regular",
+    "postScriptName": "SourceSansPro-Regular",
 	"weight": 400,
 	"style": "oblique"
 }

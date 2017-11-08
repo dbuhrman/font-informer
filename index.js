@@ -26,11 +26,11 @@ module.exports = function (file, filename) {
   }).then(function (contents) {
     return Promise.any(parsers(contents))
       .then(function (result) {
-        console.log('FILENAME: ', filename);
+        // console.log('FILENAME: ', filename);
         if (filename) {
           // Trust fileNameParser weight, format, and style (if they exist in filename) over file parsers
           var fileNameParserResult = fileNameParser(filename);
-          console.log('FILENAME RESULT:', fileNameParserResult);
+          // console.log('FILENAME RESULT:', fileNameParserResult);
           if (fileNameParserResult) {
             if (fileNameParserResult.weight) result.weight = fileNameParserResult.weight;
             if (fileNameParserResult.format) result.format = fileNameParserResult.format;
