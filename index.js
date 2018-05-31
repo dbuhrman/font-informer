@@ -40,10 +40,10 @@ module.exports = function (file, filename) {
         return result;
       })
       .catch(function (err) {
-        reject({
+         throw {
           error: 'Failed to parse font, all parsers returned an error',
           innerException: err
-        });
+        };
       });
   });
 };
